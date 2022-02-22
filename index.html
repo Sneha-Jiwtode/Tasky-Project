@@ -40,9 +40,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container-fluid">
-          <h1 class="navbar-brand fw-bold">
-             <a href="#">TaskY</a>
-            </h1> 
+        <h1 class="navbar-brand fw-bold">
+          <a href="#">TaskY</a>
+        </h1>
         <button
           class="navbar-toggler"
           type="button"
@@ -63,26 +63,69 @@
 
           <!-- Navbar Button -->
 
-          <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add new </button>
-
-
+          <button type="button" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Add new
+          </button>
         </div>
       </div>
     </nav>
     <!-- Search Bar -->
     <div class="container">
-        <section class="mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="input-group mb-3 shadow">
-                        <input type="text" class="form-control" placeholder="Search Task" aria-label="Search Task" aria-describedby="basic-addon2">
-                        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
-                     </div>
+      <section class="mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="input-group mb-3 shadow">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search Task"
+                aria-label="Search Task"
+                aria-describedby="basic-addon2"
+              />
+              <span class="input-group-text" id="basic-addon2"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                </div>
-            </div>    
-        </section>
-    </div>    
+      <!-- Card -->
+      <section>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-header d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-success">
+                  <i class="fa-solid fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <span class="badge bg-primary">Amazing</span>
+              </div>
+              <div class="card-footer text-muted">
+                <button type="button" class="btn btn-outline-primary float-end">
+                  Open Task
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- ------------------------------------------------------------------------------------------- -->
     <!-- JavaScript Bundle with Popper -->
