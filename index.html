@@ -38,6 +38,93 @@
     <title>Tasky</title>
   </head>
   <body>
+    <!-- Modal -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Image Url -->
+            <div class="mb-3">
+              <label for="imageurl" class="form-label">Image Url</label>
+              <input
+                type="url"
+                class="form-control"
+                id="imageurl"
+                placeholder="https://images.nature.com/nature.jpg"
+              />
+            </div>
+            <!-- Task Title -->
+            <div class="mb-3">
+              <label for="tasktitle" class="form-label">Task Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tasktitle"
+                placeholder="API Integration"
+              />
+            </div>
+            <!-- Task Type -->
+            <div class="mb-3">
+              <label for="tasktype" class="form-label">Task Type</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tasktype"
+                placeholder="development"
+              />
+            </div>
+            <!-- Tak Description -->
+            <div class="mb-3">
+              <label for="taskDescription" class="form-label"
+                >Task Description</label
+              >
+              <textarea
+                rows="6"
+                class="form-control"
+                id="taskdescription"
+                placeholder="Building an amazing API"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer d-flex flex-nowrap bd-highlight">
+            <button
+              type="button"
+              class="btn btn-secondary order-2 p-2 bd-highlight"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary order-1 p-2 bd-highlight"
+              onclick="saveChanges()"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------------- -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container-fluid">
         <h1 class="navbar-brand fw-bold">
@@ -63,7 +150,12 @@
 
           <!-- Navbar Button -->
 
-          <button type="button" class="btn btn-primary">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             <i class="fa-solid fa-plus"></i> Add new
           </button>
         </div>
@@ -92,7 +184,7 @@
 
       <!-- Card -->
       <section>
-        <div class="row">
+        <div class="row task__container">
           <div class="col-md-4 col-sm-6">
             <div class="card">
               <div class="card-header d-flex justify-content-end gap-2">
@@ -134,5 +226,8 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Our Js file -->
+    <script src="index.js"></script>
   </body>
 </html>
