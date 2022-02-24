@@ -2,7 +2,7 @@
 const taskContainer = document.querySelector(".task__container");
 
 // Global Store
-const globalStore = [];
+let globalStore = [];
 
 const newCard = ({
   id,
@@ -16,8 +16,8 @@ const newCard = ({
     <button type="button" class="btn btn-outline-success">
       <i class="fa-solid fa-pencil"></i>
     </button>
-    <button type="button" class="btn btn-outline-danger">
-      <i class="fa-solid fa-trash-can"></i>
+    <button type="button" id=${id} class="btn btn-outline-danger" onclick="deleteCard.apply(this, arguments)">
+      <i class="fa-solid fa-trash-can" id=${id} onclick="deleteCard.apply(this, arguments)"></i>
     </button>
   </div>
   <img
@@ -42,21 +42,22 @@ const newCard = ({
 
 // Load task
 const loadInitialTaskCards = () => {
-    // access localStorage
-    const getInitialData = localStorage.getItem("tasky");  // null
-    if (!getInitialData) return;
+  // access localStorage
+  const getInitialData = localStorage.getItem("tasky"); // null
+  if (!getInitialData) return;
 
-    // Convert stringified-object to object
-    const { cards } = JSON.parse(getInitialData);
+  // Convert stringified-object to object
+  const { cards } = JSON.parse(getInitialData);
 
-    // map arround the array to generate HTML card and inject it to DOM
-    cards.map(( cardObject ) => {
-      const createNewCard = newCard(cardObject);
-      taskContainer.insertAdjacentHTML("beforeend", createNewCard);
-      globalStore.push(cardObject);
-
-    });
+  // map arround the array to generate HTML card and inject it to DOM
+  cards.map((cardObject) => {
+    const createNewCard = newCard(cardObject);
+    taskContainer.insertAdjacentHTML("beforeend", createNewCard);
+    globalStore.push(cardObject);
+  });
 };
+
+const updateLocalStorage = (data) => localStorage.setItem("tasky", JSON.stringify({ cards: globalStore }));
 
 const saveChanges = () => {
   const taskData = {
@@ -67,12 +68,42 @@ const saveChanges = () => {
     taskDescription: document.getElementById("taskdescription").value,
   };
 
-//   HTML Code
+  //   HTML Code
   const createNewCard = newCard(taskData);
 
   taskContainer.insertAdjacentHTML("beforeend", createNewCard);
   globalStore.push(taskData);
 
-//   Add to localstorage
-  localStorage.setItem("tasky", JSON.stringify({ cards: globalStore }));
+  //   Add to localstorage
+  updateLocalStorage();
+};
+
+// Delete Card
+const deleteCard = (event) => {
+  // id
+  event = window.event;
+  const targetID = event.target.id;
+  const tagname = event.target.tagName; //BUTTON
+  console.log(targetID);
+
+  // search the globalStore, remove the object which matches with id
+  globalStore = globalStore.filter(
+    (cardObject) => cardObject.id !== targetID
+  );
+  updateLocalStorage();
+
+  // access DOM to remove them
+
+  if (tagname === "BUTTON") {
+    // task__container
+    return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
+      event.target.parentNode.parentNode.parentNode // col_md-4
+    );
+  }
+
+  // task__container
+  return event.target.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(
+    event.target.parentNode.parentNode.parentNode.parentNode // col_md-4
+  );
+  // loop over the new globalStore and inject updated cards to DOM
 };
